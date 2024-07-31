@@ -51,7 +51,7 @@ app.post('/products', async (req, res) => {
         req.body.source,
         req.body.date_scraped
     ];
-    await db.query('INSERT INTO "TrendingTopics" (product_name, image_url, price, source, date_scraped) VALUES($1, $2, $3, $4, $5)  RETURNING *;',values ,(err, data) => {
+    await db.query('INSERT INTO "TrendingProducts" (product_name, image_url, price, source, date_scraped) VALUES($1, $2, $3, $4, $5)  RETURNING *;',values ,(err, data) => {
         if (err) {
             console.log(err);
             res.send('Error')
