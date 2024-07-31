@@ -43,36 +43,46 @@ app.get('/topics', async (req, res) => {
     
 })
 
-// app.post('/products', async (req, res) => {
-//     await db.query('SELECT * FROM "TrendingProducts"', (err, data) => {
-//         if (err) {
-//             console.log(err);
-//             res.send('Error')
+app.post('/products', async (req, res) => {
+    const values = [
+        req.body.product_name,
+        req.body.image_url,
+        req.body.price,
+        req.body.source,
+        req.body.date_scraped
+    ];
+    await db.query('INSERT INTO "TrendingTopics" (product_name, image_url, price, source, date_scraped) VALUES($1, $2, $3, $4, $5)  RETURNING *;',values ,(err, data) => {
+        if (err) {
+            console.log(err);
+            res.send('Error')
             
-//         } else {
-//             console.log(data.rows);
-//             res.send(data.rows)
-//         }
-//     })
+        } else {
+            console.log(data);
+            res.send(data)
+        }
+    })
     
-// })
+})
 
-// app.post('/topics', async (req, res) => {
-//     // const values = [
-//     //     req.body.
-//     // ];
-//     await db.query('INSERT INTO "TrendingTopics" () VALUES($1, $2, $3, $4, $5, $6)  RETURNING *;',  ,(err, data) => {
-//         if (err) {
-//             console.log(err);
-//             res.send('Error')
+app.post('/topics', async (req, res) => {
+    const values = [
+        req.body.topic,
+        req.body.summary,
+        req.body.source,
+        req.body.date_scraped
+    ];
+    await db.query('INSERT INTO "TrendingTopics" () VALUES($1, $2, $3, $4)  RETURNING *;', values ,(err, data) => {
+        if (err) {
+            console.log(err);
+            res.send('Error')
             
-//         } else {
-//             console.log(data.rows);
-//             res.send(data.rows)
-//         }
-//     })
+        } else {
+            console.log(data);
+            res.send(data)
+        }
+    })
     
-// })
+})
 
 app.post('/webhook', (req, res) => {
     const data = req.body;
