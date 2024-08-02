@@ -1,7 +1,7 @@
-# StartupGen
+# Startup-gen-server
 
-## Elevator Pitch
-**Startup-Gen-server** This project is a web application built with Node.js, Express.js, and TensorFlow.js. It provides APIs for managing trending products and topics, as well as a machine learning component for time series prediction using TensorFlow.js.
+## Overview
+This project is a web application built with Node.js, Express.js, and TensorFlow.js. It provides APIs for managing trending products and topics, as well as a machine learning component for time series prediction using TensorFlow.js.
 
 ## Features
 - **Express.js API:** Endpoints to manage trending products and topics
