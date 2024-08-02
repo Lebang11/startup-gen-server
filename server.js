@@ -1,6 +1,9 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const db = require('./database/index.js');
+const tfjs = require("./tensorflow.js");
+
+tfjs.loadData().then((res) => console.log(res));
 
 
 const app = express();
@@ -90,6 +93,6 @@ app.post('/webhook', (req, res) => {
     res.json({ message: 'Received' });
 });
 
-app.listen(3000, () => {
+app.listen(3001, () => {
     console.log('Server running on port 3000');
 });
