@@ -9,7 +9,7 @@ const tfjs = require("./tensorflow.js"); // TensorFlow.js module
 /**
  * Load data from TensorFlow.js module
  */
-tfjs.loadData().then((res) => console.log(res));
+// tfjs.loadData().then((res) => console.log(res));
 
 /**
  * Create an Express.js app

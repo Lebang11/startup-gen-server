@@ -24,11 +24,11 @@ async function loadData(csvPath) {
   // console.log(results)
   return results.data
 }
-loadData("./isazi_ts_dataset.csv").then((data)=> {
-  preprocessData(data);
-  }).catch((error) => {
-    console.error("Error loading data:", error);
-  });
+// loadData("./isazi_ts_dataset.csv").then((data)=> {
+//   preprocessData(data);
+//   }).catch((error) => {
+//     console.error("Error loading data:", error);
+//   });
 
 // Preprocess data
 function preprocessData(data) {
