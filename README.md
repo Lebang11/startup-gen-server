@@ -7,11 +7,7 @@ This project is a web application built with Node.js, Express.js, and TensorFlow
 - **Express.js API:** Endpoints to manage trending products and topics
 - **PostgreSQL Database:** Store and retrieve data about products and topics.
 - **TensorFlow.js:** Load, preprocess data, train a model, and make predictions on time series data.
-
-## Tech Stack
-- **Frontend:** React, HTML, CSS, Bootstrap
-- **Backend:** Node.js,Express,PostgreSQL
-- **APIs & Libraries:** Axios, Moment.js, Dialogflow (for chatbot integration)
+- 
 ## Installation
 ## Prerequisites
 - **Node.js (v14 or later)**
