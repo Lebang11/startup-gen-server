@@ -1,4 +1,4 @@
-Here's the updated README with the additional information:
+Here's the updated README without the database-related information:
 
 # Startup-gen-server
 
@@ -6,14 +6,12 @@ Here's the updated README with the additional information:
 This project is a web application built with Node.js, Express.js, and TensorFlow.js. It provides APIs for managing trending products and topics, as well as a machine learning component for time series prediction using TensorFlow.js.
 
 ## Features
-- **Express.js API:** Endpoints to manage trending products and topics
-- **PostgreSQL Database:** Store and retrieve data about products and topics.
+- **Express.js API:** Endpoints to manage trending products and topics.
 - **TensorFlow.js:** Load, preprocess data, train a model, and make predictions on time series data.
 
 ## Installation
 ### Prerequisites
 - **Node.js (v14 or later)**
-- **PostgreSQL**
 - **TensorFlow.js**
 
 To set up the project locally, follow these steps:
@@ -28,17 +26,12 @@ To set up the project locally, follow these steps:
    cd startup-gen-server
    ```
 
-3. Configure Environment Variables:
-   ```sh
-   DATABASE_URL=postgresql://username:password@host:port/database
-   ```
-
-4. Install dependencies:
+3. Install dependencies:
    ```sh
    npm install
    ```
 
-5. Start the application:
+4. Start the application:
    ```sh
    npm start
    ```
@@ -54,4 +47,4 @@ To use the time series prediction feature, you can pass the `isazi_ts_dataset.cs
 ## License
 This project is licensed under the MIT License - see the LICENSE file for details.
 
-This README now includes the information on how to use the `isazi_ts_dataset.csv` file for running the prediction model. Let me know if there's anything else you'd like to add or modify!
+This version removes all references to the PostgreSQL database, focusing only on the API and machine learning components. Let me know if you need any more adjustments!
