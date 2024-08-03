@@ -5,16 +5,20 @@ const express = require('express'); // Express.js framework
 const bodyParser = require('body-parser'); // Body-parser middleware
 const db = require('./database/index.js'); // Database module
 const tfjs = require("./tensorflow.js"); // TensorFlow.js module
+const fileUpload = require('express-fileupload');
+const Papa = require('papaparse');
+const { readSync } = require('fs');
 
-/**
- * Load data from TensorFlow.js module
- */
-// tfjs.loadData().then((res) => console.log(res));
 
 /**
  * Create an Express.js app
  */
 const app = express();
+const PORT = 3000;
+
+// Enable files upload
+app.use(fileUpload({
+}));
 
 /**
  * Enable CORS (Cross-Origin Resource Sharing)
@@ -58,6 +62,44 @@ app.get('/products', async (req, res) => {
     }
   });
 });
+
+app.post('/csv', async (req, res) => {
+  if (!req.files || Object.keys(req.files).length === 0) {
+    return res.status(400).send('No files were uploaded.');
+  }
+
+  // Retrieve the uploaded file
+  let uploadedFile = req.files.file;
+
+  try {
+    // Read the CSV file
+    const csvData = uploadedFile.data.toString('utf8');
+
+    // Parse CSV data
+    const results = await tfjs.parseCSV(csvData)
+    
+    // Preprocess data
+    const data = await tfjs.preprocessData(results.data);
+
+    // Split data into training and testing sets
+    const splitData = await tfjs.splitData(data);
+
+    // Train the model
+    const model = await tfjs.trainModel(splitData.trainData);
+
+    // Make predictions on the test data
+    const predictions = await tfjs.makePredictions(model, splitData.testData);
+
+    // Send predictions as the response
+    res.json({ predictions });
+
+  } catch (error) {
+    console.error("Error processing file:", error);
+    res.status(500).send('Error processing file.');
+  }
+
+  
+})
 
 /**
  * Get all trending topics
@@ -182,6 +224,6 @@ app.post('/webhook', (req, res) => {
 /**
  * Start the server
  */
-app.listen(3001, () => {
-  console.log('Server running on port 3001');
+app.listen(PORT, () => {
+  console.log('Server running on port ' + PORT);
 });
